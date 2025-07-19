@@ -1,0 +1,22 @@
+
+
+Errors
+1. Type Error: blockchain is missing in the WalletBalance interface.
+2. Undefined Variable: lhsPriority is undefined in the useMemo block.
+
+Redundancies
+3. Unnecessary .toFixed() without specifying decimal places — may lead to unexpected formatting.
+4. formattedBalances is defined but never used — consider removing or using it.
+5. Using key={index} in .map() — not recommended due to potential rendering issues.
+6. prices is included in useMemo dependencies but never used — should be removed.
+
+Optimization Opportunities
+7. Combine filter and sort logic — could be done more efficiently with a single reduce() or optimized loop.
+8. Replace switch with object map for cleaner, more maintainable priority lookups.
+
+Optional Suggestions for Improvement
+9. Type Safety: Avoid any type in getPriority(blockchain: any) — replace with string or a custom Blockchain union type.
+10. Explicit Fallbacks: Ensure fallback for prices[balance.currency] (in case it's undefined) to avoid potential NaN values.
+11. Move getPriority out of component if it's pure and doesn't rely on component state — improves performance and readability.
+12. Use a stable unique key in .map() — for example: key={${balance.currency}-${balance.blockchain}}.
+
